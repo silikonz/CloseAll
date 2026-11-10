@@ -43,7 +43,7 @@ jobs:
 
       - name: Build (rootless)
         env:
-          THEOS_PLATFORM_SDK_ROOT: ${{ github.workspace }}/theos/sdks/iPhoneOS15.6.sdk
+          # THEOS_PLATFORM_SDK_ROOT: ${{ github.workspace }}/theos/sdks/iPhoneOS15.6.sdk
           THEOS_PACKAGE_SCHEME: rootless
           ARCHS: "arm64 arm64e"
           FINALPACKAGE: 1
