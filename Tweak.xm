@@ -1,14 +1,6 @@
 #import "Tweak.h"
 
 
-static SBMainSwitcherViewController *mainSwitcher = nil;
-
-%hook SBMainSwitcherViewController
-- (void)viewWillAppear:(BOOL)arg1 {
-    %orig;
-    mainSwitcher = self; // 'self' is ALWAYS the current, live instance
-}
-%end
 
 // Add close button to switcher
 %hook SBAppSwitcherScrollView
@@ -22,8 +14,6 @@ static SBMainSwitcherViewController *mainSwitcher = nil;
 
 %new
 - (void)addButton {
-    //if (!mainSwitcher) mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
-
     if (self.superview) {
         self.closeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.closeAllButton.titleEdgeInsets = UIEdgeInsetsMake(-2,-2,-2,-2);
@@ -126,6 +116,7 @@ static SBMainSwitcherViewController *mainSwitcher = nil;
             [cm clearApp:item16 switcher:mainSwitcher16 /*excludeList:keyArray*/];
         }
     } else {
+        SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
         NSArray *items = mainSwitcher.recentAppLayouts;
         for (SBAppLayout *item in items) {
             //AudioServicesPlaySystemSound(1519);
