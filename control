@@ -1,0 +1,9 @@
+Package: me.closeall
+Name: CloseAll
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Quit all apps
+Maintainer: me
+Author: me
+Section: Tweaks
+Depends: 
