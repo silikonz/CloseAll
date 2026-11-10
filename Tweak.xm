@@ -62,16 +62,21 @@
         }];
     } else {
         if (@available(iOS 16.0, *)) {
-            SBMainSwitcherControllerCoordinator *mainSwitcher = [%c(SBMainSwitcherControllerCoordinator) sharedInstance];
+            SBMainSwitcherControllerCoordinator *mainSwitcher16 = [%c(SBMainSwitcherControllerCoordinator) sharedInstance];
+            if (mainSwitcher16 && [[mainSwitcher16 recentAppLayouts] count] > 0) {
+                [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^ {
+                    self.closeAllButton.alpha = 1;
+                    self.blurView.alpha = 1;
+                } completion:nil];
+            }
         } else {
             SBMainSwitcherViewController *mainSwitcher = [%c(SBMainSwitcherViewController) sharedInstance];
-        }
-        
-        if (mainSwitcher && [[mainSwitcher recentAppLayouts] count] > 0) {
-            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^ {
-                self.closeAllButton.alpha = 1;
-                self.blurView.alpha = 1;
-            } completion:nil];
+            if (mainSwitcher && [[mainSwitcher recentAppLayouts] count] > 0) {
+                [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^ {
+                    self.closeAllButton.alpha = 1;
+                    self.blurView.alpha = 1;
+                } completion:nil];
+            }
         }
     }
 }
