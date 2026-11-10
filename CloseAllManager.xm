@@ -15,8 +15,8 @@
         if (@available(iOS 16.0, *)) {
             if ([NSStringFromClass([switcher class]) isEqualToString:@"SBMainSwitcherControllerCoordinator"]) [switcher _deleteAppLayoutsMatchingBundleIdentifier:bundleID];
         } else {
-        if ([NSStringFromClass([switcher class]) isEqualToString:@"SBMainSwitcherViewController"]) [switcher _deleteAppLayoutsMatchingBundleIdentifier:bundleID];
-        //}
+            if ([NSStringFromClass([switcher class]) isEqualToString:@"SBMainSwitcherViewController"]) [switcher _deleteAppLayoutsMatchingBundleIdentifier:bundleID];
+        }
     }
 }
 @end
