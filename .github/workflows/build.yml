@@ -11,14 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Configure Xcode
-        run: |
-          echo "DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer" >> "$GITHUB_ENV"
-      
-          xcodebuild -version
-          xcrun --sdk iphoneos --find clang
-          xcrun --sdk iphoneos --find clang++
-
       - name: Setup Theos
         run: |
           brew install ldid make
